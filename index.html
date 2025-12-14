@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>No Like, Go Home Restaurant - Premium Steaks & Grills</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --warm-brown: #8B4513;
+      --cream: #F5F5DC;
+      --charcoal: #2C2C2C;
+      --soft-red: #C94A4A;
+      --light-cream: #FFFEF8;
+      --dark-brown: #654321;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--charcoal);
+      background-color: var(--light-cream);
+    }
+
+    /* Header */
+    header {
+      background-color: var(--warm-brown);
+      color: var(--cream);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--soft-red);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(44, 44, 44, 0.5), rgba(44, 44, 44, 0.5)),
+                  url('https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=1200&q=80') center/cover;
+      height: 70vh;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--cream);
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .hero-content p {
+      font-size: 1.5rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--warm-brown);
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    /* Menu Section */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .menu-category {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .menu-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .menu-category h3 {
+      color: var(--soft-red);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--warm-brown);
+      padding-bottom: 0.5rem;
+    }
+
+    .menu-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .menu-item-name {
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+    }
+
+    .menu-item-price {
+      color: var(--warm-brown);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* About Section */
+    .about-content {
+      background: white;
+      padding: 3rem;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-info {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .contact-info h3 {
+      color: var(--warm-brown);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 0.8rem;
+      color: var(--charcoal);
+    }
+
+    .contact-info strong {
+      color: var(--soft-red);
+    }
+
+    .map-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background-color: var(--soft-red);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      border: none;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .btn:hover {
+      background-color: var(--warm-brown);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--charcoal);
+      color: var(--cream);
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      nav ul {
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+    }
+
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Chatbot Customization */
+    :root {
+      --flowise-primary-color: var(--warm-brown);
+      --flowise-background-color: var(--light-cream);
+      --flowise-text-color: var(--charcoal);
+      --flowise-button-color: var(--warm-brown);
+      --flowise-button-hover: var(--dark-brown);
+      --flowise-bubble-color: var(--cream);
+      --flowise-user-bubble: var(--soft-red);
+    }
+
+    /* Override Flowise chatbot colors */
+    flowise-chatbot,
+    flowise-chatbot * {
+      --primary-color: var(--warm-brown) !important;
+      --background-color: var(--light-cream) !important;
+      --text-color: var(--charcoal) !important;
+    }
+
+    /* Chatbot button styling */
+    [id*="flowise-chatbot"] button,
+    [class*="flowise-chatbot"] button,
+    button[class*="chatbot"] {
+      background-color: var(--warm-brown) !important;
+      color: var(--cream) !important;
+    }
+
+    [id*="flowise-chatbot"] button:hover,
+    [class*="flowise-chatbot"] button:hover,
+    button[class*="chatbot"]:hover {
+      background-color: var(--dark-brown) !important;
+    }
+
+    /* Chatbot message bubbles */
+    [id*="flowise-chatbot"] [class*="message"],
+    [class*="flowise-chatbot"] [class*="message"] {
+      background-color: var(--cream) !important;
+      color: var(--charcoal) !important;
+    }
+
+    /* Chatbot user messages */
+    [id*="flowise-chatbot"] [class*="user"],
+    [class*="flowise-chatbot"] [class*="user"] {
+      background-color: var(--soft-red) !important;
+      color: white !important;
+    }
+
+    /* Chatbot input */
+    [id*="flowise-chatbot"] input,
+    [id*="flowise-chatbot"] textarea,
+    [class*="flowise-chatbot"] input,
+    [class*="flowise-chatbot"] textarea {
+      background-color: white !important;
+      color: var(--charcoal) !important;
+      border-color: var(--warm-brown) !important;
+    }
+
+    /* Chatbot header */
+    [id*="flowise-chatbot"] [class*="header"],
+    [class*="flowise-chatbot"] [class*="header"] {
+      background-color: var(--warm-brown) !important;
+      color: var(--cream) !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="#home" class="logo">No Like, Go Home Restaurant</a>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Premium Steaks, Grilled to Perfection</h1>
+      <p>Authentic Philippine Steakhouse & Grill Experience</p>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu">
+    <h2 class="section-title">Our Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-category">
+        <h3>Steaks</h3>
+        <div class="menu-item">
+          <div class="menu-item-name">Fillet Steak (250g)</div>
+          <div class="menu-item-price">₱780</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Ribeye Steak (300g)</div>
+          <div class="menu-item-price">₱845</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">T-Bone Steak (500g)</div>
+          <div class="menu-item-price">₱985</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Sirloin Steak (200g)</div>
+          <div class="menu-item-price">₱635</div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3>Grills</h3>
+        <div class="menu-item">
+          <div class="menu-item-name">Lamb Chops</div>
+          <div class="menu-item-price">₱740</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Pork Ribs (Full Rack)</div>
+          <div class="menu-item-price">₱670</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Chicken Breast</div>
+          <div class="menu-item-price">₱495</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Grilled Salmon</div>
+          <div class="menu-item-price">₱810</div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3>Sauces</h3>
+        <div class="menu-item">
+          <div class="menu-item-name">Mushroom Sauce</div>
+          <div class="menu-item-price">₱105</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Pepper Sauce</div>
+          <div class="menu-item-price">₱105</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Garlic Butter</div>
+          <div class="menu-item-price">₱90</div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3>Sides</h3>
+        <div class="menu-item">
+          <div class="menu-item-name">Baked Potato</div>
+          <div class="menu-item-price">₱125</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Creamed Spinach</div>
+          <div class="menu-item-price">₱140</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Grilled Vegetables</div>
+          <div class="menu-item-price">₱160</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Onion Rings</div>
+          <div class="menu-item-price">₱125</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Greek Salad</div>
+          <div class="menu-item-price">₱210</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Garlic Bread</div>
+          <div class="menu-item-price">₱140</div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3>Desserts</h3>
+        <div class="menu-item">
+          <div class="menu-item-name">Crème Brûlée</div>
+          <div class="menu-item-price">₱245</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Chocolate Mousse</div>
+          <div class="menu-item-price">₱230</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Cheesecake</div>
+          <div class="menu-item-price">₱265</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title">About Us</h2>
+    <div class="about-content">
+      <p>
+        Welcome to No Like, Go Home Restaurant, where we bring you the finest steaks and authentic Filipino grilled dishes. 
+        Our passion for quality ingredients and traditional cooking methods creates an unforgettable dining experience.
+      </p>
+      <p>
+        We source only the best cuts of meat and prepare them with care, combining international steakhouse excellence 
+        with the warm hospitality and flavors of the Philippines. Every dish is crafted to perfection, ensuring that 
+        each visit is a memorable one.
+      </p>
+      <p>
+        Whether you're celebrating a special occasion or simply craving a delicious meal, we're here to serve you 
+        with the best steaks and grills in town.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Visit Us</h3>
+        <p><strong>Address:</strong><br>
+        V.Rama Avenue<br>
+        Cebu City, Cebu<br>
+        Philippines 6000</p>
+        
+        <p><strong>Phone:</strong><br>
+        +63 946 718 2297</p>
+        
+        <p><strong>Email:</strong><br>
+        reymarkrivas61@gmail.com</p>
+        
+        <h3 style="margin-top: 2rem;">Operating Hours</h3>
+        <p><strong>Monday - Thursday:</strong> 11:00 AM - 10:00 PM</p>
+        <p><strong>Friday - Saturday:</strong> 11:00 AM - 11:00 PM</p>
+        <p><strong>Sunday:</strong> 12:00 PM - 9:00 PM</p>
+      </div>
+      
+      <div class="map-container">
+        <h3 style="color: var(--warm-brown); margin-bottom: 1rem;">Find Us</h3>
+        <iframe 
+          src="https://www.google.com/maps?q=10.305397,123.887096&hl=en&z=14&output=embed"
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 No Like, Go Home Restaurant. All rights reserved.</p>
+  </footer>
+
+  <!-- Flowise Chatbot -->
+  <script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+
+    Chatbot.init({
+      chatflowid: "f45a919c-0ec8-467c-ade7-36ef579a04bc",
+      apiHost: "http://localhost:3000",
+      theme: {
+        primaryColor: "#8B4513",
+        backgroundColor: "#FFFEF8",
+        textColor: "#2C2C2C",
+        buttonColor: "#8B4513",
+        buttonTextColor: "#F5F5DC",
+        botMessageBackgroundColor: "#F5F5DC",
+        botMessageTextColor: "#2C2C2C",
+        userMessageBackgroundColor: "#C94A4A",
+        userMessageTextColor: "#FFFFFF",
+      }
+    })
+  </script>
+  
+  <style>
+    /* Additional chatbot styling to match theme */
+    flowise-chatbot {
+      --flowise-primary-color: #8B4513;
+      --flowise-background-color: #FFFEF8;
+      --flowise-text-color: #2C2C2C;
+    }
+    
+    /* Target the chatbot button */
+    button[class*="flowise-chatbot-button"],
+    div[class*="flowise-chatbot-button"] button,
+    [id*="flowise"] button {
+      background-color: #8B4513 !important;
+      color: #F5F5DC !important;
+      border-radius: 50% !important;
+      box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3) !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    button[class*="flowise-chatbot-button"]:hover,
+    div[class*="flowise-chatbot-button"] button:hover,
+    [id*="flowise"] button:hover {
+      background-color: #654321 !important;
+      transform: scale(1.05) !important;
+      box-shadow: 0 6px 16px rgba(139, 69, 19, 0.4) !important;
+    }
+    
+    /* Chatbot window styling */
+    [id*="flowise-chatbot-window"],
+    [class*="flowise-chatbot-window"],
+    [class*="chatbot-window"] {
+      border-radius: 15px !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+      border: 1px solid rgba(139, 69, 19, 0.2) !important;
+    }
+    
+    /* Chatbot header */
+    [id*="flowise-chatbot"] header,
+    [class*="flowise-chatbot"] header,
+    [class*="chatbot-header"] {
+      background: linear-gradient(135deg, #8B4513 0%, #654321 100%) !important;
+      color: #F5F5DC !important;
+      border-radius: 15px 15px 0 0 !important;
+    }
+    
+    /* Message bubbles */
+    [class*="message-bubble"],
+    [class*="bot-message"],
+    [class*="assistant-message"] {
+      background-color: #F5F5DC !important;
+      color: #2C2C2C !important;
+      border-radius: 12px !important;
+    }
+    
+    [class*="user-message"],
+    [class*="human-message"] {
+      background-color: #C94A4A !important;
+      color: #FFFFFF !important;
+      border-radius: 12px !important;
+    }
+    
+    /* Input field */
+    [id*="flowise-chatbot"] input[type="text"],
+    [id*="flowise-chatbot"] textarea,
+    [class*="flowise-chatbot"] input[type="text"],
+    [class*="flowise-chatbot"] textarea {
+      background-color: white !important;
+      color: #2C2C2C !important;
+      border: 2px solid #8B4513 !important;
+      border-radius: 25px !important;
+    }
+    
+    [id*="flowise-chatbot"] input[type="text"]:focus,
+    [id*="flowise-chatbot"] textarea:focus,
+    [class*="flowise-chatbot"] input[type="text"]:focus,
+    [class*="flowise-chatbot"] textarea:focus {
+      border-color: #654321 !important;
+      outline: none !important;
+      box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1) !important;
+    }
+    
+    /* Send button */
+    [id*="flowise-chatbot"] button[type="submit"],
+    [class*="flowise-chatbot"] button[type="submit"],
+    [class*="send-button"] {
+      background-color: #8B4513 !important;
+      color: #F5F5DC !important;
+      border-radius: 50% !important;
+    }
+    
+    [id*="flowise-chatbot"] button[type="submit"]:hover,
+    [class*="flowise-chatbot"] button[type="submit"]:hover,
+    [class*="send-button"]:hover {
+      background-color: #654321 !important;
+    }
+  </style>
+</body>
+</html>
