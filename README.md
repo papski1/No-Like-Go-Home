@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 No Like, Go Home — UI/UX Enhancements
 
 What's included:
@@ -30,3 +31,6 @@ Optional improvements:
 - Add lazy-loading of large images and implement srcset for responsive images.
 
 Credits: This was updated as a lightweight, beginner-friendly UI/UX enhancement to the existing site.
+=======
+"# No-Like-Go-Home" 
+>>>>>>> 0a4c60f168e6f2a134dcfc5098aea0eb5a3aa21c
